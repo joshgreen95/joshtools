@@ -5,7 +5,7 @@
 
 LHOST="$1"
 LPORT="$2"
-PERSIST_DIR="$HOME/.persistence"
+PERSIST_DIR="~/.persistence"
 
 if [[ -z "$LHOST" || -z "$LPORT" ]]; then
   echo -e "\e[91m[!] Usage: $0 <LHOST> <LPORT>\e[0m"
